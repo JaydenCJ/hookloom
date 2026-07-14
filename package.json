@@ -2,7 +2,7 @@
   "name": "hookloom",
   "version": "0.1.0",
   "description": "Compiles a declarative hook manifest into settings.json: deterministic ordering, compile-time conditions, dedupe, and a CI drift check. Zero runtime dependencies, fully offline.",
-  "author": "JaydenCJ",
+  "author": "JaydenCJ <aisingioro.kiyon@gmail.com>",
   "license": "MIT",
   "type": "module",
   "bin": {
