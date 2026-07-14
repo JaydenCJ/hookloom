@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "target": ".claude/settings.json",
+  "vars": {
+    "FORMAT": "npx prettier --write"
+  },
+  "hooks": [
+    {
+      "id": "guard-secrets",
+      "event": "PreToolUse",
+      "matcher": "Read|Grep",
+      "run": "sh scripts/hooks/deny-secret-reads.sh",
+      "timeout": 5,
+      "priority": 10,
+      "description": "Block the agent from reading .env and key material."
+    },
+    {
+      "id": "guard-destructive-shell",
+      "event": "PreToolUse",
+      "matcher": "Bash",
+      "run": "sh scripts/hooks/deny-destructive.sh",
+      "timeout": 5,
+      "priority": 10,
+      "description": "Refuse rm -rf, force pushes and history rewrites."
+    },
+    {
+      "id": "format-on-edit",
+      "event": "PostToolUse",
+      "matcher": "Write|Edit",
+      "run": "${FORMAT} \"$CLAUDE_FILE_PATHS\"",
+      "timeout": 60,
+      "priority": 20,
+      "description": "Keep edited files formatted so diffs stay reviewable."
+    },
+    {
+      "id": "log-session",
+      "event": "SessionStart",
+      "run": "echo \"session started\" >> .claude/session.log",
+      "priority": 50,
+      "when": { "not": { "env": ["CI"] } },
+      "description": "Local session journal; pointless on CI runners."
+    },
+    {
+      "id": "ci-transcript",
+      "event": "Stop",
+      "run": "sh scripts/hooks/export-transcript.sh",
+      "timeout": 30,
+      "priority": 50,
+      "when": { "profile": ["ci"] },
+      "description": "Archive the transcript as a build artifact on CI."
+    }
+  ]
+}

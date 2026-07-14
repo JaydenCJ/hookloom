@@ -1,0 +1,54 @@
+{
+  "name": "hookloom",
+  "version": "0.1.0",
+  "description": "Compiles a declarative hook manifest into settings.json: deterministic ordering, compile-time conditions, dedupe, and a CI drift check. Zero runtime dependencies, fully offline.",
+  "author": "JaydenCJ",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "hookloom": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test \"tests/*.test.mjs\"",
+    "smoke": "bash scripts/smoke.sh"
+  },
+  "keywords": [
+    "hooks",
+    "settings.json",
+    "agents",
+    "claude-code",
+    "compile",
+    "drift-detection",
+    "ci",
+    "declarative"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaydenCJ/hookloom.git"
+  },
+  "homepage": "https://github.com/JaydenCJ/hookloom#readme",
+  "bugs": {
+    "url": "https://github.com/JaydenCJ/hookloom/issues"
+  }
+}

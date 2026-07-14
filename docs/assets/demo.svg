@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+  <rect width="760" height="420" rx="10" fill="#0d1117"/>
+  <rect width="760" height="34" rx="10" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="17" r="6" fill="#28c840"/>
+  <text x="380" y="21" fill="#8b949e" text-anchor="middle">hookloom — settings.json hooks, compiled from one manifest</text>
+
+  <text x="24" y="64" fill="#7ee787">$ hookloom build</text>
+  <text x="24" y="88" fill="#c9d1d9">wrote .claude/settings.json <tspan fill="#8b949e">(4 command(s) across 3 event(s))</tspan></text>
+
+  <text x="24" y="124" fill="#7ee787">$ hookloom check</text>
+  <text x="24" y="148" fill="#c9d1d9"><tspan fill="#3fb950">OK:</tspan> .claude/settings.json is in sync with hookloom.json <tspan fill="#8b949e">(4 command(s) across 3 event(s))</tspan></text>
+
+  <text x="24" y="184" fill="#8b949e"># ...a teammate hand-edits settings.json...</text>
+
+  <text x="24" y="216" fill="#7ee787">$ hookloom check</text>
+  <text x="24" y="240" fill="#c9d1d9"><tspan fill="#f85149">DRIFT:</tspan> .claude/settings.json does not match hookloom.json</text>
+  <text x="24" y="260" fill="#c9d1d9">  PostToolUse / "Write|Edit":</text>
+  <text x="24" y="280" fill="#3fb950">    + "npm run format" (timeout 60s)</text>
+  <text x="24" y="300" fill="#f85149">    - "npx prettier -w ." (timeout 60s)</text>
+  <text x="24" y="320" fill="#c9d1d9">  Stop:</text>
+  <text x="24" y="340" fill="#f85149">    - "say done"</text>
+  <text x="24" y="360" fill="#d29922">run "hookloom build" to regenerate      <tspan fill="#8b949e">exit code 1 — CI fails, main stays clean</tspan></text>
+
+  <text x="24" y="396" fill="#8b949e">ordering · conditions · profiles · dedupe · drift check · zero deps · offline</text>
+</svg>

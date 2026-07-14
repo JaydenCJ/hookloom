@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": ["Bash(npm run test:*)"],
+    "deny": ["Read(./.env)"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "sh scripts/hooks/deny-destructive.sh", "timeout": 5 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "sh scripts/hooks/export-transcript.sh" }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "PROJECT_MODE": "review"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "extends": ["./team.loom.json"],
+  "vars": {
+    "FORMAT": "npm run format --"
+  },
+  "hooks": [
+    {
+      "id": "log-session",
+      "event": "SessionStart",
+      "run": "echo unused",
+      "enabled": false,
+      "description": "This project opts out of the team's session journal."
+    },
+    {
+      "id": "typecheck-on-edit",
+      "event": "PostToolUse",
+      "matcher": "Write|Edit",
+      "run": "npx tsc --noEmit",
+      "timeout": 120,
+      "priority": 30,
+      "when": { "fileExists": "tsconfig.json" },
+      "description": "Fast feedback when the agent edits TypeScript."
+    }
+  ]
+}
